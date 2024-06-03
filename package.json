@@ -10,16 +10,16 @@
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
-    "eslint": "^8.47.0",
-    "eslint-config-manzdev": "^0.0.2",
-    "gh-pages": "^6.0.0",
-    "stylelint": "^15.10.2",
-    "stylelint-config-manzdev": "^0.0.10",
-    "vite": "^4.4.5"
+    "eslint": "^9.4.0",
+    "eslint-config-manzdev": "^0.0.8",
+    "gh-pages": "^6.1.1",
+    "stylelint": "^16.6.1",
+    "stylelint-config-manzdev": "^0.0.18",
+    "vite": "^5.2.12"
   },
   "keywords": [],
   "license": "ISC",
   "dependencies": {
-    "phaser": "^3.60.0"
+    "phaser": "^3.80.1"
   }
 }
