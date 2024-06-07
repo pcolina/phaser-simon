@@ -32,9 +32,8 @@ This will start a development server and open the game in your default web brows
 
 ## How to Play
 
-- Use the arrow keys to move the player character.
-- Press the spacebar to perform an action (e.g., jump).
-- Try to reach the end of the level or achieve the game's objective.
+- Use the arrow keys to move and jump the player character. 
+- no objective yet :S.
 
 ## Credits
 
