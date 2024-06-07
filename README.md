@@ -26,7 +26,7 @@ This is a simple game created with Phaser. It's designed to fulfill the requirem
 
 To start the game, run the following command:
 
-```npm run dev```
+```npm run dev -o```
  
 This will start a development server and open the game in your default web browser.
 
