@@ -1,39 +1,68 @@
 import Phaser from "phaser";
-import { SimonControls } from "../character/simon/simonControls"
+import { SimonControls } from "./character/simon/simonControls"
 
 export class SceneA extends Phaser.Scene {
   constructor() {
     super("GameScene");
     this.cursors = null;
     this.cody = null;
+    this.lives = [];
   }
 
   
 
 
   preload() {
-    this.load.image("bg", './assets/sceneOne/bg.jpg');
-    this.load.spritesheet('brawler', 'https://labs.phaser.io/assets/animations/brawler48x48.png', { frameWidth: 48, frameHeight: 48 });
      
+    this.load.image("live", "sceneOne/heart.png");
+    this.load.image("bg", "sceneOne/bg.jpg");
+    this.load.image("floor", "sceneOne/floor.jpg");
+    this.load.spritesheet('brawler', 'https://labs.phaser.io/assets/animations/brawler48x48.png', { frameWidth: 48, frameHeight: 48 });
+  
   
   }
 
   create() {
    
-    const backgroundImage = this.add.image(0, 0, "bg").setOrigin(0);
+    
+    this.bg =this.add.image(220, 280,  "bg").setScale(1.6);
+    
     // Ajustar el tamaño para que ocupe toda la pantalla
-    backgroundImage.displayWidth = this.sys.game.config.width;
-    backgroundImage.displayHeight = this.sys.game.config.height;
+    // backgroundImage.displayWidth = this.sys.game.config.width;
+    // backgroundImage.displayHeight = this.sys.game.config.height;
 
-    const ground = this.add.rectangle(0, 450, 180, 300, 0x9d2d9d).setOrigin(0, 0);
-    const ground2 = this.add.rectangle(280, 450, 800, 300, 0x9d2d9d).setOrigin(0, 0);
+    const ground = this.add.image(0, 450, "floor").setOrigin(0, 0).setDisplaySize(180, 300);
+    const ground2 = this.add.image(280, 450,  "floor").setOrigin(0, 0).setDisplaySize( 200, 300);
+    const ground3 = this.add.image(630, 450,  "floor").setOrigin(0, 0).setDisplaySize(  65, 300);
+    const ground4 = this.add.image(0, 150,   "floor").setOrigin(0, 0).setDisplaySize( 385, 35);
+    const step1 = this.add.image(500, 350,  "floor").setOrigin(0, 0).setDisplaySize( 85, 35);
+    const step2 = this.add.image(620, 250,  "floor").setOrigin(0, 0).setDisplaySize( 85, 35 );
+    const step3 = this.add.image(700, 150,  "floor").setOrigin(0, 0).setDisplaySize( 85, 35);
+    const step4 = this.add.image(450, 180,  "floor").setOrigin(0, 0).setDisplaySize( 55, 35);
     this.physics.add.existing(ground, true);
     this.physics.add.existing(ground2, true);
+    this.physics.add.existing(ground3, true);
+    this.physics.add.existing(ground4, true);
+    this.physics.add.existing(step1, true);
+    this.physics.add.existing(step2, true);
+    this.physics.add.existing(step3, true);
+    this.physics.add.existing(step4, true);
     //ground.body.setImmovable(true);  
  
 
+    this.initGame();
 
-    this.cursors = this.input.keyboard.createCursorKeys();
+ 
+    
+    
+
+
+    // Crear el texto de "Game Over", inicialmente invisible
+this.gameOverText = this.add.text(400, 300, 'Game Over', {
+  fontSize: '64px',
+  fill: '#ff0000'
+}).setOrigin(0.5).setAlpha(0);
+
 
       // Animation set
       this.anims.create({
@@ -113,27 +142,31 @@ export class SceneA extends Phaser.Scene {
 
     this.cody.setCollideWorldBounds(true); // Evita que el sprite salga del mundo
 
-    this.physics.add.collider(this.cody, [ground,ground2]);
+    this.physics.add.collider(this.cody, [ground,ground2, ground3, ground4]);
+    this.physics.add.collider(this.cody, step1, null, this.handleStepCollision, this);
+    this.physics.add.collider(this.cody, step2, null, this.handleStepCollision, this);
+    this.physics.add.collider(this.cody, step3, null, this.handleStepCollision, this);
+    this.physics.add.collider(this.cody, step4, null, this.handleStepCollision, this);
 
      
-    const fallSensor = this.add.zone(200, 500, 50, 50).setOrigin(0, 0);
+    const fallSensor = this.add.zone(200, 500, 500, 50).setOrigin(0, 0);
         this.physics.add.existing(fallSensor);
         fallSensor.body.setAllowGravity(false);
         fallSensor.body.setImmovable(true);
 
         this.physics.add.overlap(this.cody, fallSensor, this.handleFall, null, this);
-        this.cameras.main.startFollow(this.cody);
+        //this.cameras.main.startFollow(this.cody);
       }
 
   update() {
-    
+    //this.bg.tilePositionX -= .1;
     const horizontalSpeed = 160; // Velocidad horizontal normal
     const airHorizontalSpeed = 80; // Velocidad horizontal en el aire
 
 
       if (this.cursors.right.isDown) {
         
-        
+        //this.bg.tilePositionX += .1;
         this.cody.setVelocityX(horizontalSpeed);
         this.cody.flipX = true;
         if (this.cody.anims.currentAnim.key !== 'walk') {
@@ -141,7 +174,7 @@ export class SceneA extends Phaser.Scene {
         }
       }
        else if (this.cursors.left.isDown) {
-       
+        //this.bg.tilePositionX -= .1;
         this.cody.setVelocityX(-horizontalSpeed);
         this.cody.flipX = false;
         if (this.cody.anims.currentAnim.key !== 'walk') {
@@ -175,19 +208,74 @@ export class SceneA extends Phaser.Scene {
   
   }
 
+  initGame(){
+    this.setLives();
+    this.cursors = this.input.keyboard.createCursorKeys();
+    
+     
+  }
+  
+  setLives(){
+    this.lives.push(this.add.image(700, 580, "live").setScale(0.01));
+     this.lives.push(this.add.image(740, 580, "live").setScale(0.01));
+    this.lives.push(this.add.image(780, 580, "live").setScale(0.01));
+    
+    console.log("nuevas vidas!")
+   }
+
   handleFall(player, sensor) {
     // Lógica para quitar una vida
     console.log("me cai!")
-    this.lives -= 1;
-    console.log(`Lives remaining: ${this.lives}`);
     
+    this.loseLife(sensor);
+   
     // Reiniciar la posición del jugador
-    this.cody.setPosition(100, 400);
+    this.cody.setPosition(100, 350);
     
-    // Puedes añadir lógica adicional, como finalizar el juego cuando las vidas se acaban
-    if (this.lives <= 0) {
-        console.log('Game Over');
-        // Aquí puedes reiniciar la escena o mostrar una pantalla de Game Over
+  }
+
+  loseLife(sensor) {
+    console.log("pierde vida")
+    if (this.lives.length > 1) {
+        this.life= this.lives.shift(); // Obtén la última vida de la matriz
+        console.log(`nuevas vidas: ${this.lives.length}`);
+        this.life.destroy(); // Destruye la imagen
+      }else{
+        this.life= this.lives.shift();
+        this.life.destroy(); // Destruye la imagen
+       this.showGameOver(sensor);
     }
+ 
+  }
+  
+  showGameOver(sensor) {
+     
+    this.gameOverText?.setAlpha(1);
+     sensor.scene.bg.setAlpha(0.5);
+   
+     // Eliminar los eventos de las teclas de flecha
+     sensor.scene.cursors.left = false;
+     sensor.scene.cursors.down = false;
+     sensor.scene.cursors.up = false;
+     sensor.scene.cursors.right = false;
+     
+
+     // Configurar un evento solo para la barra espaciadora
+     this.input.keyboard.on('keydown-SPACE', () => {
+         // Lógica para la barra espaciadora
+         this.gameOverText.setAlpha(0);
+         sensor.scene.bg.setAlpha(1);
+         this.initGame();
+     });
+
 }
+
+isFalling(cody) {
+  return cody.body.velocity.y > 0;
+}
+handleStepCollision(cody, step) {
+  return this.isFalling(cody);
+}
+
+
 }

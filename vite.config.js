@@ -10,7 +10,6 @@ export default defineConfig({
   root: "src",
   base,
   mode,
-  envDir: "../",
   publicDir: "../public",
   resolve: {
     alias: {

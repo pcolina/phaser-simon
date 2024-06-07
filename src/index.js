@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { SceneA } from "./scenes/SceneA.js";
+import { SceneA } from "./SceneA.js";
 import { TitleScene } from "./scenes/SceneStart.js";
 import { width, height } from "./modules/constants.js";
 
@@ -12,7 +12,7 @@ const config = {
     default: 'arcade',   
     arcade: {
       gravity: { y: 300 },   
-      debug: true   
+      debug: false   
     }
   },
   scene: [ SceneA]
