@@ -10,23 +10,23 @@ This is a simple game created with Phaser. It's designed to fulfill the requirem
 
 1. Clone this repository to your local machine:
 
-'''git clone https://github.com/your-username/phaser-test-game.git'''
+```git clone https://github.com/your-username/phaser-test-game.git```
 
 2. Navigate to the project directory:
 
-'''cd phaser-test-game'''
+```cd phaser-test-game```
  
 
 3. Install dependencies using npm:
 
-'''npm install'''
+```npm install```
 
  
 ## Usage
 
 To start the game, run the following command:
 
-'''npm run dev'''
+```npm run dev```
  
 This will start a development server and open the game in your default web browser.
 
