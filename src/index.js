@@ -1,6 +1,7 @@
 import Phaser from "phaser";
-import { SceneA } from "./SceneA.js";
-import { TitleScene } from "./scenes/SceneStart.js";
+import { TitleScene } from "./scenes/SceneTitle.js";
+import { ControlsScene } from "./scenes/SceneControls.js";
+import { StageOneScene } from "./scenes/SceneStageOne.js";
 import { width, height } from "./modules/constants.js";
 
 const config = {
@@ -15,7 +16,7 @@ const config = {
       debug: false   
     }
   },
-  scene: [ SceneA]
+  scene: [  TitleScene, ControlsScene, StageOneScene]
 };
 
 // eslint-disable-next-line
