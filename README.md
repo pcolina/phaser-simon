@@ -1,6 +1,12 @@
 # Phaser Test Game
 
-This is a simple game created with Phaser. It's designed to fulfill the requirements given by my nephews for testing purposes.
+This is a simple game created with Phaser. It's designed to fulfill the requirements given by my nephews for testing purposes, with its objective purely centered on learning to use Phaser.
+
+This project relies on two core libraries:
+
+- **Phaser** (^3.80.1): A versatile game development framework for JavaScript.
+- **Vite** (^5.2.12): A rapid build tool enhancing development workflow, commonly used alongside Rollup or webpack for compression and bundling in production.
+
 
 ## Requirements
 
