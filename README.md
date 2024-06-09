@@ -32,10 +32,12 @@ This will start a development server and open the game in your default web brows
 
 ## How to Play
 
-- Use the arrow keys to move and jump the player character. 
-- no objective yet :S.
+- Use the arrow keys to move and jump the player character. P=> Pause
+- The objective is to go to the toilet, collecting all the paper you find along the way.
 
 ## Credits
+
+This project is based on the [boilerplate de ManzDev](https://github.com/ManzDev/phaser3-simple-template).
 
 - This game was created using Phaser (https://phaser.io/).
 - Additional assets were sourced from [OpenGameArt.org](https://opengameart.org/).
