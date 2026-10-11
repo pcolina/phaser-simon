@@ -2,6 +2,10 @@
 
 This is a simple game created with Phaser. It's designed to fulfill the requirements given by my nephews for testing purposes, with its objective purely centered on learning to use Phaser.
 
+### 🎮 [Live demo](https://pcolina.github.io/phaser-simon/)
+
+![Simon title screen](docs/screenshot.png)
+
 This project relies on two core libraries:
 
 - **Phaser** (^3.80.1): A versatile game development framework for JavaScript.
@@ -16,11 +20,11 @@ This project relies on two core libraries:
 
 1. Clone this repository to your local machine:
 
-```git clone https://github.com/your-username/phaser-test-game.git```
+```git clone https://github.com/pcolina/phaser-simon.git```
 
 2. Navigate to the project directory:
 
-```cd phaser-test-game```
+```cd phaser-simon```
  
 
 3. Install dependencies using npm:
