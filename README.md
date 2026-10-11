@@ -4,7 +4,7 @@ This is a simple game created with Phaser. It's designed to fulfill the requirem
 
 ### 🎮 [Live demo](https://pcolina.github.io/phaser-simon/)
 
-![Simon title screen](docs/screenshot.png)
+![Simon gameplay](docs/screenshot.png)
 
 This project relies on two core libraries:
 
