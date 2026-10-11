@@ -27,7 +27,7 @@ export class ControlsScene extends Phaser.Scene {
        // Mostrar instrucciones en pantalla
        this.add.text(280, 40, 'Use the arrow keys to move', { fontSize: '16px', fill: '#FFF' });
        this.add.image(265, 70, "arows").setOrigin(0, 0).setDisplaySize(290,220);
-       this.add.text(280, 340, 'Press the spacebar to pause', { fontSize: '16px', fill: '#FFF' });
+       this.add.text(280, 340, 'Press P to pause', { fontSize: '16px', fill: '#FFF' });
 
        const goBackButton =  this.add.text(300, 500, ' Go Back', { fontSize: '16px', fill: '#FFF' }).setScale(2);
 
