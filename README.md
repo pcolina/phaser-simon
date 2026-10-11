@@ -1,16 +1,25 @@
-# Phaser Test Game
+# phaser-simon
 
-This is a simple game created with Phaser. It's designed to fulfill the requirements given by my nephews for testing purposes, with its objective purely centered on learning to use Phaser.
+A small platformer I built for my nephews while learning Phaser 3. Simon has to reach the toilet, but only after picking up the toilet paper on the way.
 
 ### 🎮 [Live demo](https://pcolina.github.io/phaser-simon/)
 
 ![Simon gameplay](docs/gameplay.png)
 
-This project relies on two core libraries:
+## Features
 
-- **Phaser** (^3.80.1): A versatile game development framework for JavaScript.
-- **Vite** (^5.2.12): A rapid build tool enhancing development workflow, commonly used alongside Rollup or webpack for compression and bundling in production.
+- Title screen with a retro bitmap font and a controls screen
+- One platformer stage with arcade physics, solid ground and one-way platforms you can jump through from below
+- Animated player character (idle, walk, jump)
+- Item pickup: the toilet only finishes the stage once you have the paper
+- Three lives, falling into the water costs one, and Game Over with restart (Space)
+- Pause / resume with P
+- Background music and sound effects for jumping, dying, picking up the paper and winning
 
+## Tech stack
+
+- **Phaser** (^3.80.1): game framework (scenes, arcade physics, animations, audio)
+- **Vite** (^5.2.12): dev server and production build
 
 ## Requirements
 
@@ -18,39 +27,48 @@ This project relies on two core libraries:
 
 ## Installation
 
-1. Clone this repository to your local machine:
+1. Clone this repository:
 
-```git clone https://github.com/pcolina/phaser-simon.git```
+   ```
+   git clone https://github.com/pcolina/phaser-simon.git
+   ```
 
 2. Navigate to the project directory:
 
-```cd phaser-simon```
- 
+   ```
+   cd phaser-simon
+   ```
 
-3. Install dependencies using npm:
+3. Install dependencies:
 
-```npm install```
+   ```
+   npm install --legacy-peer-deps
+   ```
 
- 
 ## Usage
 
-To start the game, run the following command:
+Start the development server and open the game in your browser:
 
-```npm run dev -o```
- 
-This will start a development server and open the game in your default web browser.
+```
+npm run dev -- --open
+```
 
 ## How to Play
 
-- Use the arrow keys to move and jump the player character. P=> Pause
-- The objective is to go to the toilet, collecting all the paper you find along the way.
+- **← →**: move
+- **↑**: jump
+- **P**: pause / resume
+- **Space**: restart after Game Over
+
+Grab the toilet paper and make it to the toilet without falling into the water.
 
 ## Credits
 
-This project is based on the [boilerplate de ManzDev](https://github.com/ManzDev/phaser3-simple-template).
+The project started from [ManzDev's Phaser 3 simple template](https://github.com/ManzDev/phaser3-simple-template), which provides the Vite and lint configuration and an empty scene. Everything on top of it is my own work: the title and controls screens, the stage and its platforms, the player controls and animations, the paper and toilet logic, lives, Game Over, pause, and sound.
 
-- This game was created using Phaser (https://phaser.io/).
-- Additional assets were sourced from [OpenGameArt.org](https://opengameart.org/).
+- Built with [Phaser](https://phaser.io/).
+- Player sprite sheet from the [Phaser examples](https://labs.phaser.io/).
+- Additional assets from [OpenGameArt.org](https://opengameart.org/).
 
 ## License
 
